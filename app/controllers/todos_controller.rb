@@ -8,4 +8,10 @@ class TodosController < ApplicationController
     todo = Todo.find(id)
     render plain: todo.to_displayable_string
   end
+
+  def create
+    todo_text = params[:todo_text]
+    due_date = DateTime.parse(params[:due_date])
+    render plain: "#{todo_text} => #{due_date}"
+  end
 end
