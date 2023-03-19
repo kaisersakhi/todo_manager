@@ -8,4 +8,9 @@ Rails.application.routes.draw do
   # get "todos/:id", to: "todos#show"
 
   resources :todos
+
+  # get "users", to: "users#show"
+  # post "users", to: "users#create"
+  resources :users
+  post "users/login", action: :login, controller: "users"
 end
