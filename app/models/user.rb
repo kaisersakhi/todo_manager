@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  def name
-    self.name
+
+  def to_s
+    "#{self.name} | #{self.email}"
   end
 end

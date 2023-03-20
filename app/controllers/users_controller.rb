@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   self.skip_before_action(:verify_authenticity_token)
-  def show
-    render plain: "fdf"#User.all#.each {|user| user.name}.join('\n')
+  def index
+    render plain: User.all.each {|user| user.name.to_s}.join('\n')
   end
 
   def create
