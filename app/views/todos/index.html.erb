@@ -1,0 +1,48 @@
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <link rel="stylesheet" href="../../assets/stylesheets/reset.css">-->
+<!--    <link rel="stylesheet" href="../../assets/stylesheets/todo-app.css">-->
+<!--    <title>Todo Manager</title>-->
+<!--</head>-->
+<!--<body>-->
+<h1>Todo Manager</h1>
+
+<article>
+  <section class="AddTodo">
+    <input type="text" name="task_name" placeholder="What's next?" class="TodoInputText">
+    <input type="date" class="TodoDueDate">
+    <button class="TodoAddButton">Add</button>
+  </section>
+
+  <%= render partial: "todo-section", locals:
+    {
+      section_title: "Overdue",
+      todos: Todo.overdue,
+      show_due_date: true
+    }
+  %>
+  <%= render partial: "todo-section", locals:
+    {
+      section_title: "Due Today",
+      todos: Todo.due_today,
+      show_due_date: false
+    }
+  %>
+
+  <%= render partial: "todo-section", locals:
+    {
+      section_title: "Due Later",
+      todos: Todo.due_later,
+      show_due_date: true
+    }
+  %>
+  <%#= render "todo-section" %>
+
+</article>
+<!--</body>-->
+<!--</html>-->
