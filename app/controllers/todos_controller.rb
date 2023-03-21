@@ -38,4 +38,10 @@ class TodosController < ApplicationController
     # render plain: "The status of the todo '#{todo.todo_text}' has been updated to #{status}"
     redirect_to todos_path
   end
+
+  def destroy
+    todo = Todo.find(params[:id])
+    todo.destroy!
+    redirect_to todos_path
+  end
 end
