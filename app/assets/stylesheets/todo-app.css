@@ -31,6 +31,7 @@ section{
     align-items: stretch;
     height: 32px;
     width: 100%;
+    margin-top: 20px;
 }
 
 .TodoInputText{
@@ -100,7 +101,9 @@ section{
 
 
 .TodoItem-container:hover .TodoItem-delete{
-
     visibility: visible;
+}
 
+.TodoItem-container-completed{
+    text-decoration: line-through;
 }
