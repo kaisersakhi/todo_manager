@@ -107,3 +107,30 @@ section{
 .TodoItem-container-completed{
     text-decoration: line-through;
 }
+
+.NewUser-form{
+    margin-top: 20px;
+}
+
+.NewUser-form label{
+    display: block;
+    color: darkgrey;
+    margin-bottom: 5px;
+    margin-top: 12px;
+}
+.NewUser-input{
+    display: block;
+    font-size: 20px;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.NewUser-submitButton{
+    display: block;
+    font-size: 20px;
+    padding: 8px 18px;
+    background: #48BB78;
+    border: none;
+    border-radius: 8px;
+    margin-top: 12px;
+}

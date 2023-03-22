@@ -1,9 +1,9 @@
+# frozen_string_literal: true
 class TodosController < ApplicationController
-  self.skip_before_action(:verify_authenticity_token)
-
+  # self.skip_before_action(:verify_authenticity_token)
+  self.protect_from_forgery
   def index
-    # render plain: Todo.order(:due_date).map { |todo| todo.to_displayable_string }.join("\n")
-    render "index"
+    render 'index'
   end
 
   def show
@@ -19,15 +19,15 @@ class TodosController < ApplicationController
     p params
 
     new_todo = Todo.create!(
-      todo_text: todo_text,
-      due_date: due_date,
+      todo_text:, # omitted the hash value, based on Rubocop recommendation
+      due_date:,
       completed: false,
     )
     # response_text = "Hey, your new todo is created with the id:#{new_todo.id}"
     redirect_to todos_path
   end
 
-  #PATCH/PUT  /todos/:id
+  # PATCH/PUT  /todos/:id
   def update
     id = params[:id]
     status = params[:status]

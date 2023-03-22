@@ -1,0 +1,13 @@
+<h1>Welcome to Simple Todo-Manager</h1>
+
+<%= form_with url: :users, method: :post, class: 'NewUser-form' do |form| %>
+  <%= form.label :first_name %>
+  <%= form.text_field :first_name, class: 'NewUser-input' %>
+  <%= form.label :last_name %>
+  <%= form.text_field :last_name, class: 'NewUser-input' %>
+  <%= form.label :email %>
+  <%= form.email_field :email, class: 'NewUser-input' %>
+  <%= form.label :password %>
+  <%= form.password_field :password, class: 'NewUser-input' %>
+  <%= form.submit 'Sign Up', class: 'NewUser-submitButton'%>
+<% end %>

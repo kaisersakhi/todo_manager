@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-
+  has_many :todos
   def to_s
-    "#{self.name} | #{self.email}"
+    "#{name} | #{email}"
   end
 end

@@ -1,4 +1,5 @@
 class Todo < ActiveRecord::Base
+  belongs_to :user
   def to_displayable_string
     status = completed ? "[x]" : "[ ]"
     "#{id}. #{Date.parse(due_date)} #{todo_text} #{status}"

@@ -1,32 +1,35 @@
 class UsersController < ApplicationController
-  self.skip_before_action(:verify_authenticity_token)
+  skip_before_action(:verify_authenticity_token)
   def index
     render plain: User.all.each {|user| user.name.to_s}.join("\n")
   end
 
   def create
-    name = params[:name]
+    first_name = params[:first_name]
+    last_name = params[:last_name]
     email = params[:email]
     password = params[:password]
 
     user = User.create!(
-      name: name,
-      email: email,
-      password: password
+      first_name:,
+      last_name:,
+      email:,
+      password_digest: password
     )
 
-    response_text = user ? "True" : "False"
-    render plain: response_text
+    redirect_to '/'
   end
 
   def login
     email = params[:email]
     password = params[:password]
-    users = User.where("email = ?", email)
-    response_text = "False"
-    if users.size == 1 && users[0].password == password.strip
-      response_text = "True"
-    end
+    users = User.where('email = ?', email)
+    response_text = 'False'
+    response_text = 'True' if users.size == 1 && users[0].password == password.strip
     render plain: response_text
+  end
+
+  def new
+    render 'new'
   end
 end

@@ -13,11 +13,12 @@
 <h1>Todo Manager</h1>
 
 <article>
-  <form class="AddTodo" action="/todos" method="post">
+  <%= form_with(url: "/todos", method: "post", class: "AddTodo") do %>
+<!--  <form class="AddTodo" action="/todos" method="post">-->
     <input type="text" name="todo_text" placeholder="What's next?" class="TodoInputText">
     <input type="date" name="due_date" class="TodoDueDate">
     <button class="TodoAddButton">Add</button>
-  </form>
+  <% end %>
 
   <%= render partial: "todo-section", locals:
     {
