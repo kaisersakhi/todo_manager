@@ -1,9 +1,14 @@
 # frozen_string_literal: true
 class TodosController < ApplicationController
   # self.skip_before_action(:verify_authenticity_token)
-  self.protect_from_forgery
+  protect_from_forgery
+
   def index
-    render 'index'
+    if current_user
+      render 'index', locals: { current_user: current_user }
+    else
+      redirect_to '/'
+    end
   end
 
   def show
@@ -22,6 +27,7 @@ class TodosController < ApplicationController
       todo_text:, # omitted the hash value, based on Rubocop recommendation
       due_date:,
       completed: false,
+      user_id: @current_user.id
     )
     # response_text = "Hey, your new todo is created with the id:#{new_todo.id}"
     redirect_to todos_path

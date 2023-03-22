@@ -16,11 +16,6 @@ h2 {
     color: #453c52;
 }
 
-p{
-    /*padding-left: 60px;*/
-    color: #453c52;
-}
-
 section{
     margin-top: 30px;
     /*margin-left: 20px;*/
@@ -133,4 +128,22 @@ section{
     border: none;
     border-radius: 8px;
     margin-top: 12px;
+}
+
+/*TODO PAGE*/
+.TodoHeader{
+    display: flex;
+    justify-content: space-between;
+    background: #4c668e;
+    padding: 12px;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+.TodoHeader-greeting{
+    color: white;
+}
+.TodoHeader-signout a{
+    color: white;
+    text-decoration: none;
 }

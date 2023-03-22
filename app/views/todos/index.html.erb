@@ -1,20 +1,18 @@
-<!--<!doctype html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport"-->
-<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
-<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
-<!--    <link rel="stylesheet" href="../../assets/stylesheets/reset.css">-->
-<!--    <link rel="stylesheet" href="../../assets/stylesheets/todo-app.css">-->
-<!--    <title>Todo Manager</title>-->
-<!--</head>-->
-<!--<body>-->
+
+<div class="TodoHeader">
+  <p class="TodoHeader-greeting">Hello, <%= current_user.first_name %>!</p>
+  <p class="TodoHeader-signout"><a href="#">Sign Out</a></p>
+</div>
+
 <h1>Todo Manager</h1>
+
+<!--<h3 style="margin-top: 10px;">-->
+<!--  <span style=" color: blue;"><%#= user_first_name %></span>-->
+<!--  's Todo List-->
+<!--</h3>-->
 
 <article>
   <%= form_with(url: "/todos", method: "post", class: "AddTodo") do %>
-<!--  <form class="AddTodo" action="/todos" method="post">-->
     <input type="text" name="todo_text" placeholder="What's next?" class="TodoInputText">
     <input type="date" name="due_date" class="TodoDueDate">
     <button class="TodoAddButton">Add</button>
@@ -23,14 +21,14 @@
   <%= render partial: "todo-section", locals:
     {
       section_title: "Overdue",
-      todos: Todo.overdue,
+      todos: Todo.overdue(current_user.id),
       show_due_date: true
     }
   %>
   <%= render partial: "todo-section", locals:
     {
       section_title: "Due Today",
-      todos: Todo.due_today,
+      todos: Todo.due_today(current_user.id),
       show_due_date: false
     }
   %>
@@ -38,12 +36,10 @@
   <%= render partial: "todo-section", locals:
     {
       section_title: "Due Later",
-      todos: Todo.due_later,
+      todos: Todo.due_later(current_user.id),
       show_due_date: true
     }
   %>
   <%#= render "todo-section" %>
 
 </article>
-<!--</body>-->
-<!--</html>-->
