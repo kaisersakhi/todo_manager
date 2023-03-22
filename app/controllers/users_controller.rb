@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   # skip_before_action(:verify_authenticity_token)
-  has_secure_password
   def index
     render plain: User.all.each {|user| user.name.to_s}.join("\n")
   end

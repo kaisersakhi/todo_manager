@@ -1,0 +1,11 @@
+<h1>Simple Todo-Manager | Welcome Back</h1>
+
+
+<%= form_with url: sign_in_path, method: :post, class: 'NewUser-form' do |form| %>
+
+  <%= form.label :email %>
+  <%= form.email_field :email, class: 'NewUser-input' %>
+  <%= form.label :password %>
+  <%= form.password_field :password, class: 'NewUser-input' %>
+  <%= form.submit 'Sign In', class: 'NewUser-submitButton'%>
+<% end %>
