@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  skip_before_action(:verify_authenticity_token)
+  # skip_before_action(:verify_authenticity_token)
+  has_secure_password
   def index
     render plain: User.all.each {|user| user.name.to_s}.join("\n")
   end
@@ -14,7 +15,7 @@ class UsersController < ApplicationController
       first_name:,
       last_name:,
       email:,
-      password_digest: password
+      password:
     )
 
     redirect_to '/'
