@@ -1,7 +1,8 @@
 
 <div class="TodoHeader">
   <p class="TodoHeader-greeting">Hello, <%= current_user.first_name %>!</p>
-  <p class="TodoHeader-signout"><a href="#">Sign Out</a></p>
+<!--  <p class="TodoHeader-signout"><a href="#">Sign Out</a></p>-->
+  <%= button_to 'Sign Out', :signout, method: :delete, class: 'TodoHeader-signout' %>
 </div>
 
 <h1>Todo Manager</h1>

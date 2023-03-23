@@ -18,4 +18,10 @@ class SessionsController < ApplicationController
       puts 'wrong email or password'
     end
   end
+
+  def sign_out
+    session[:current_user_id] = nil
+    @current_user = nil
+    redirect_to new_sign_in_path
+  end
 end

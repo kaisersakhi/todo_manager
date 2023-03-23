@@ -18,4 +18,5 @@ Rails.application.routes.draw do
 
   get '/sign-in', action: :new, controller: 'sessions', as: :new_sign_in
   post '/sign-in', action: :create, controller: 'sessions', as: :sign_in
+  delete '/signout', action: :sign_out, controller: 'sessions'
 end
