@@ -147,3 +147,13 @@ section{
     color: white;
     text-decoration: none;
 }
+
+.Flash-error{
+    margin-top: 20px;
+    color: white;
+    background: #730E15;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+}

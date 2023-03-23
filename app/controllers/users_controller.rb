@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   # skip_before_action(:verify_authenticity_token)
   skip_before_action :ensure_user_logged_in
+
   def index
     render plain: User.all.each { |user| user.name.to_s }.join("\n")
   end
@@ -32,6 +33,10 @@ class UsersController < ApplicationController
   end
 
   def new
-    render 'new'
+    if current_user
+      redirect_to todos_path
+    else
+      render 'new'
+    end
   end
 end

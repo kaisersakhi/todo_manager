@@ -4,7 +4,7 @@ class TodosController < ApplicationController
   protect_from_forgery
 
   def index
-    @todos = Todo.of(current_user)
+    @todos = current_user.todos
     if current_user
       render 'index', locals: { current_user: current_user }
     else
@@ -20,17 +20,15 @@ class TodosController < ApplicationController
 
   def create
     todo_text = params[:todo_text]
-    due_date = Date.parse(params[:due_date].to_s)
+    due_date = params[:due_date].to_s
 
-    p params
-
-    new_todo = Todo.create!(
+    new_todo = Todo.new(
       todo_text:, # omitted the hash value, based on Rubocop recommendation
       due_date:,
       completed: false,
       user_id: @current_user.id
     )
-    # response_text = "Hey, your new todo is created with the id:#{new_todo.id}"
+    flash[:error] = new_todo.errors.full_messages.join(' ') unless new_todo.save
     redirect_to todos_path
   end
 
@@ -39,7 +37,7 @@ class TodosController < ApplicationController
     id = params[:id]
     status = params[:status]
 
-    todo = Todo.of(current_user).find(id)
+    todo = current_user.todos.find(id)
     todo.completed = status
     todo.save!
     # render plain: "The status of the todo '#{todo.todo_text}' has been updated to #{status}"
@@ -47,7 +45,7 @@ class TodosController < ApplicationController
   end
 
   def destroy
-    todo = Todo.of(current_user).find(params[:id])
+    todo = current_user.todos.find(params[:id])
     todo.destroy!
     redirect_to todos_path
   end

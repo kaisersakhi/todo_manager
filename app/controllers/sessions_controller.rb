@@ -15,7 +15,8 @@ class SessionsController < ApplicationController
       redirect_to '/'
     else
       # either email is incorrect or password is wrong
-      puts 'wrong email or password'
+      flash[:error] = 'Invalid Email or Password, retry!'
+      redirect_to sign_in_path
     end
   end
 
