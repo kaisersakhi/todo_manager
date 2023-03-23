@@ -4,6 +4,7 @@ class TodosController < ApplicationController
   protect_from_forgery
 
   def index
+    @todos = Todo.of(current_user)
     if current_user
       render 'index', locals: { current_user: current_user }
     else
@@ -38,7 +39,7 @@ class TodosController < ApplicationController
     id = params[:id]
     status = params[:status]
 
-    todo = Todo.find(id)
+    todo = Todo.of(current_user).find(id)
     todo.completed = status
     todo.save!
     # render plain: "The status of the todo '#{todo.todo_text}' has been updated to #{status}"
@@ -46,7 +47,7 @@ class TodosController < ApplicationController
   end
 
   def destroy
-    todo = Todo.find(params[:id])
+    todo = Todo.of(current_user).find(params[:id])
     todo.destroy!
     redirect_to todos_path
   end

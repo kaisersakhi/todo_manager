@@ -1,26 +1,27 @@
 class Todo < ActiveRecord::Base
   belongs_to :user
   def to_displayable_string
-    status = completed ? "[x]" : "[ ]"
+    status = completed ? '[x]' : '[ ]'
     "#{id}. #{Date.parse(due_date)} #{todo_text} #{status}"
   end
 
-  def self.overdue(user_id = -1)
-    p user_id
-    Todo.where("due_date < ? and completed = ? and user_id = ?", Date.today.to_s, false, user_id)
+  def self.overdue
+    Todo.where('due_date < ? and completed = ?', Date.today.to_s, false)
   end
 
-  def self.due_today(user_id = -1)
-    Todo.where("due_date = ? and user_id = ?", Date.today.to_s, user_id)
+  def self.due_today
+    Todo.where('due_date = ?', Date.today.to_s)
   end
 
-  def self.due_later(user_id = -1)
-    Todo.where("due_date > ? and user_id = ?", Date.today.to_s, user_id)
+  def self.due_later
+    Todo.where('due_date > ?', Date.today.to_s)
   end
 
   def self.completed
-    Todo.where("completed = ?", true)
+    Todo.where('completed = ?', true)
   end
 
-
+  def self.of(user)
+    all&.where(user_id: user.id)
+  end
 end

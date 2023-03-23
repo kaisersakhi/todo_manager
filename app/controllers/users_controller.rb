@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
   # skip_before_action(:verify_authenticity_token)
+  skip_before_action :ensure_user_logged_in
   def index
     render plain: User.all.each { |user| user.name.to_s }.join("\n")
   end
 
+  # @return [Object]
   def create
     first_name = params[:first_name]
     last_name = params[:last_name]
@@ -16,7 +18,7 @@ class UsersController < ApplicationController
       email:,
       password:
     )
-
+    session[:current_user_id] = user.id
     redirect_to '/'
   end
 
