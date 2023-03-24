@@ -24,8 +24,11 @@ test:
   database: test_saas_db
 
 production:
-  <<: *default
-  username: kaiser
+  adapter: postgresql
+  host: localhost
+  user: kaiser
   url: <%= ENV['DATABASE_URL'] %>
   database: prod_saas_db
   password: <%= ENV['RENDER_DEPLOY_DATABASE_PASSWORD'] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
