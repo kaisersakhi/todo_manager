@@ -12,24 +12,24 @@
 
 ActiveRecord::Schema[7.0].define(version: 2023_03_22_094908) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'todos', force: :cascade do |t|
-    t.string 'todo_text'
-    t.text 'due_date'
-    t.boolean 'completed'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.bigint 'user_id'
+  create_table "todos", force: :cascade do |t|
+    t.string "todo_text"
+    t.text "due_date"
+    t.boolean "completed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'first_name'
-    t.string 'email'
-    t.string 'password_digest'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.string 'last_name'
+  create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "last_name"
   end
 
 end
