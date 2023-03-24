@@ -25,4 +25,7 @@ test:
 
 production:
   <<: *default
+  username: kaiser
+  url: <%= ENV['DATABASE_URL'] %>
   database: prod_saas_db
+  password: <%= ENV['RENDER_DEPLOY_DATABASE_PASSWORD'] %>
