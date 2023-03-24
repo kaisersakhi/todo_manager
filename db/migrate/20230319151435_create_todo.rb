@@ -4,7 +4,6 @@ class CreateTodo < ActiveRecord::Migration[7.0]
       t.string :todo_text
       t.text :due_date
       t.boolean :completed
-
       t.timestamps
     end
   end
