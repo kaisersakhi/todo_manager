@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   skip_before_action :ensure_user_logged_in
 
   def index
-    render plain: User.all.each { |user| user.name.to_s }.join("\n")
+    render plain: User.all.each(&:to_s).join("\n")
   end
 
   # @return [Object]
